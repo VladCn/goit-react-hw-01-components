@@ -1,9 +1,11 @@
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 
 const ProfileWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  border: 1px solid grey;
+  margin-bottom: 50px;
 `
 const Avatar = styled.img`
   width: auto;
@@ -16,18 +18,26 @@ const Description = styled.div`
 const Stats = styled.ul`
   display: flex;
   padding: 0;
+  margin: 0;
+  width: 100%;
+  border-top: 1px solid grey;
 `
 const Item = styled.li`
   display: flex;
   flex-direction: column;
   align-items: center;
   list-style-type: none;
-  padding: 20px;
-  border: 1px solid grey;
+  padding: 40px;
   font-size: 24px;
   text-transform: none;
-  width: 90px;
-  height: 90px;
+  width: calc(100%/3);
+
+  &:first-child{
+    border-right: 1px solid grey;
+  }
+  &:last-child{
+    border-left: 1px solid grey;
+  }
 `
 
 

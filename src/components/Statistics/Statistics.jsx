@@ -1,28 +1,61 @@
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
+
+function filterByProp(arr, prop) {
+  const reversed = [...arr].reverse();
+  const seen = {};
+
+  return reversed.filter(item => {
+    if (seen[item[prop]]) {
+      return false;
+
+    } else {
+      seen[item[prop]] = true;
+      return true;
+    }
+  });
+}
+
+
+const Section = styled.section`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid black;
+`
+const List = styled.ul`
+display: flex;
+  padding: 0;
+  margin: 0;
+`
+const Item = styled.li`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  list-style-type: none;
+  padding: 30px;
+  border: 1px solid black;
+`
 
 
 export function Statistics({ title = 'Upload stats', stats }){
-const newStats = stats
-  .filter(item => item.label === ".pdf" && item.label)
-  // .reduce((acc, item) => acc + item, {})
-console.log(newStats)
 
-  console.log("121212")
-
+  //const filterItem = filterByProp(stats, "label");
 
 return (
-  <section className="statistics">
-    <h2 className="title">{title}</h2>
+  <Section>
+    <h2>{title}</h2>
 
-  <ul classNames="stat-list">
-    {stats.map(item => (
-      <li className="item" key={item.id}>
-        <span className="label">{item.label}</span>
-        <span className="percentage">{item.percentage}</span>
-      </li>
-    ))}
+  <List>
+    {filterByProp(stats, "label").map(item => {
+      return (
+        <Item key={item.id} >
+          <span>{item.label}</span>
+          <span>{item.percentage}</span>
+        </Item>
+      )
+    })}
 
-  </ul>
-</section>
+  </List>
+</Section>
 )
 }
