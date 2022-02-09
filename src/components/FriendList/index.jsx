@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components'
+import styled, { css } from 'styled-components';
 
 const Item = styled.li`
   display: flex;
@@ -6,14 +6,16 @@ const Item = styled.li`
   border: 1px solid black;
   margin-bottom: 10px;
   width: 400px;
+
   padding: 20px;
-  & img, span {
+  & img,
+  span {
     margin-right: 10px;
   }
   & p {
     margin: 0;
   }
-`
+`;
 const Status = styled.span`
   width: 20px;
   height: 20px;
@@ -21,25 +23,30 @@ const Status = styled.span`
   border-radius: 90px;
   background-color: red;
 
-  ${props => props.status && css`
-    background: green;
-  `}
-`
+  ${props =>
+    props.status &&
+    css`
+      background: green;
+    `}
+`;
 
-
-export function FriendList({ friends }){
-
+export function FriendList({ friends }) {
   return (
     <ul className="friend-list">
       {friends.map(item => {
-        return(
+        return (
           <Item key={item.id}>
-            <Status status={item.isOnline}/>
-            <img className="avatar" src={item.avatar} alt="User avatar" width="48" />
+            <Status status={item.isOnline} />
+            <img
+              className="avatar"
+              src={item.avatar}
+              alt="User avatar"
+              width="48"
+            />
             <p className="name">{item.name}</p>
           </Item>
-        )
+        );
       })}
     </ul>
-  )
+  );
 }
