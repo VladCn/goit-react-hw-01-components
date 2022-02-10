@@ -1,4 +1,6 @@
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
+import { Profile } from '../Profile';
 
 const Table = styled.table`
   border: 1px solid grey;
@@ -47,3 +49,7 @@ export function TransactionHistory({ items }) {
     </Table>
   );
 }
+
+Profile.propTypes = {
+  items: PropTypes.object,
+};

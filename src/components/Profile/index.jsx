@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 const ProfileWrapper = styled.div`
   display: flex;
@@ -67,3 +68,11 @@ export function Profile({ username, tag, location, avatar, stats }) {
     </ProfileWrapper>
   );
 }
+
+Profile.propTypes = {
+  username: PropTypes.string,
+  tag: PropTypes.string,
+  location: PropTypes.string,
+  avatar: PropTypes.string,
+  stats: PropTypes.object,
+};

@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 function filterByProp(arr, prop) {
   const reversed = [...arr].reverse();
@@ -38,10 +39,10 @@ const Item = styled.li`
   }
 `;
 
-export function Statistics({ title = 'Upload stats', stats }) {
+export function Statistics({ title, stats }) {
   return (
     <Section>
-      <h2>{title}</h2>
+      {title ? <h2>{title}</h2> : null}
 
       <List>
         {filterByProp(stats, 'label').map(item => {
@@ -56,3 +57,8 @@ export function Statistics({ title = 'Upload stats', stats }) {
     </Section>
   );
 }
+
+Statistics.propTypes = {
+  title: PropTypes.string,
+  stats: PropTypes.array.isRequired,
+};
